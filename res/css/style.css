@@ -1,0 +1,65 @@
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    /*border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+#pokedex-header{
+ background-image:url(../template/pokedex_header.png);
+ width:60%;
+ height:10%;
+ background-repeat: no-repeat;
+ /* position: absolute; */
+ /* left: 55%; */
+ /* background-size: 70%; */
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ background-color: transparent;
+}
+
+.img-banner{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  height: 17%;
+}
+
+.content{
+  background-image: url(../template/background.png);
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  /* display: block; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  margin-left: 20%;
+  margin-right: 5%;
+}
+
+.text-content{
+  text-transform: capitalize;
+  font: italic small-caps bold 14px "Comic Sans MS", sans-serif;
+}
