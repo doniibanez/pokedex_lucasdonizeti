@@ -1,5 +1,6 @@
 <?php
 require "../lib/PokeApi.php";
+// require "../includes/init.php";
 
 if(isset($_GET['url'])){
 // API
@@ -52,25 +53,35 @@ header('Location: '.SITE_URL.'/'.SITE_FOLDER);
 
   <body>
     <?php include '../includes/pokedex-header.php';?>
-    <div class = "content">
+    <div class = "content" style="padding: 0 3%">
       <img src="<?php echo $pokemon->sprites->front_default?>" alt="Pokemon Sprite"/>
-      <!-- TYPES -->
       <div>
-        <h4>Types</h4>
+        <h1><?php echo $pokemon->name?></h1>
+      </div>
+
+      <!-- INFOS POKE -->
+      <div>
         <ul>
+          <li><?php echo "Height: ".$pokemon->height."m"?></li>
+          <li><?php echo "Weight: ".$pokemon->weight."kg"?></li>
+          <li><?php echo "Base EXP.: ".$pokemon->base_experience."xp"?></li>
+        </ul>
+      </div>
+
+      <!-- TYPES -->
+      <div class="pure-control-group">
+        <h4>Types</h4>
+        <ul id = "list-types">
           <?php
               foreach ($pokemon->types as $t) {
-                 echo "<li><p>".$t->type->name."</p></li>";
+                 echo "<li>".$t->type->name."</li>";
                }
           ?>
         </ul>
+
       </div>
-        <h1><?php echo $pokemon->name?></h1>
+
         <div>
-          <!-- INFOS POKE -->
-          <h3><?php echo "Height ".$pokemon->height."m"?></h3>
-          <h3><?php echo "Weight ".$pokemon->weight."kg"?></h3>
-          <h3><?php echo "Base EXP. ".$pokemon->base_experience."xp"?></h3>
           <!-- STATS -->
           <h4>Stats</h4>
           <ul>
@@ -97,15 +108,19 @@ header('Location: '.SITE_URL.'/'.SITE_FOLDER);
       <!-- Pokemons moves -->
       <div>
         <h4>Moves</h4>
-        <ul>
-          <?php
-            foreach ($pokemon->moves as $mv) {
-              echo "<li><p>".$mv->move->name."</p></li>";
-            }
-          ?>
-        </ul>
+        <div class = "div-scroll">
+          <ul>
+            <?php
+              foreach ($pokemon->moves as $mv) {
+                echo "<li><p>".$mv->move->name."</p></li>";
+              }
+            ?>
+          </ul>
+        </div>
+
       </div>
       <a href="../index.php">Back to home</a>
     </div>
+    <?php include '../includes/footer.php';?>
   </body>
 </html>
