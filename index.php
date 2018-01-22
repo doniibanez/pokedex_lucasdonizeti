@@ -1,13 +1,10 @@
 <?php
   require "./lib/PokeApi.php";
   require "./controller/pokemon-controller.php";
-  // require './includes/init.php';
   $api = new PokeApi;
 
   // GETS
   $offset = isset($_GET['offset'])? $_GET['offset'] : null;
-  // $limit = isset($_GET['limit'])? $_GET['limit'] : null;
-  // Limit pokemons per page
   $limit = 10;
 
   if (isset($_GET['filter_name'])) {
@@ -30,6 +27,13 @@
   <?php include 'includes/header.php';?>
 
   <body>
+    <script type = "text/javascript">
+      $(document).ready(function(){
+        setTimeout('$("#preload").fadeOut(100)', 1500);
+      });
+    </script>
+
+    <div id="preload" class="preload"></div>
     <!-- HEADER -->
     <header>
       <div>
@@ -55,9 +59,7 @@
         </div>
 
         <div class = "description-container description-index">
-          <!-- <tr> -->
             <small style="color: red"> Click the Pokéball to see details of the Pokémon.</small>
-          <!-- </tr> -->
         </div>
 
         <table class = "poke-table">
@@ -68,19 +70,9 @@
 
               echo "<tr>";
                 echo "<td><p class = 'text-content'>$name</p></td>";
-                  echo "<td><div class ='tooltip'><a href = 'view/pokemon.php?url=$url'><img src = 'res/template/icon-pokeball.png'/><spam class='tooltiptext'>Click here for more information about the pokemon!</spam></a></div></td>";
+                  echo "<td><div class ='tooltip'><a href = 'view/pokemon.php?url=$url'><img src = 'res/template/icon-pokeball.png'/><span class='tooltiptext'>Click here for more information about the pokemon!</span></a></div></td>";
               echo "<tr>";
-
-              // echo "<pre>";
-              // var_dump($name);
-              // var_dump($url);
-              // echo "</pre>";
             }
-            // echo "<pre>";
-            // var_dump($results);
-            // echo "</pre>";
-
-          // echo $pokemon->name;
            ?>
         </table>
         <?php
@@ -94,8 +86,8 @@
             }
           }
         ?>
-        <div>
-            <a href="view/pokebag.php/?offset=<?php echo $offset?>"><img src="res/template/open-pokebag.png" alt = "Open Pokebag!"></a>
+        <div class = "tooltip">
+            <a href="view/pokebag.php/?offset=<?php echo $offset?>"><img src="res/template/open-pokebag.png" alt = "Open Pokebag!"><span class='tooltiptext'>Click here to see the six best pokemons on this page!</span></a>
         </div>
     </div>
     <?php include 'includes/footer.php';?>

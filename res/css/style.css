@@ -43,6 +43,21 @@ body{
  background-color: transparent;
 }
 
+.preload {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: #fff;
+  background-image: url('https://pokelive.io/assets/img/loading.gif');
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 #pokedex-bottom{
  /* background-image:url(../template/pokedex_bottom.png); */
  width:60%;

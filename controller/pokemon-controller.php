@@ -11,19 +11,12 @@
     require "../lib/PokeApi.php";
 
     $api =  new PokeApi();
-    // $count_x = $offset;
-    // $count_y = 0;
+
     $pokemons = array();
 
-    //do {
       $list = $api->resourceList("pokemon", 10, $offset);
-      // $count_y = $list->count;
-    //  $count_x = $count_x + 10;
-
-    // var_dump($list);
 
       foreach ($list->results as $result) {
-        // $pokemon_api = $api->pokemon($result->name);
         $pokemon_api = $api->sendRequest($result->url);
         $pokemon = new StdClass();
         $pokemon->name = $pokemon_api->name;
@@ -32,24 +25,14 @@
         $pokemon->stats = $pokemon_api->stats;
         $pokemon->base_experience = $pokemon_api->base_experience;
         foreach ($pokemon->stats as $s) {
-          // var_dump($s->stat->name);
             if($s->stat->name == "attack"){
-              // var_dump($s->stat->name);
-              // var_dump($s->base_stat);
-              // echo "entrou no if</br>";
                 $pokemon->attack = $s->base_stat;
             }
 
           }
         array_push($pokemons, $pokemon);
-        // echo $result->name."</br>";
       }
 
-      // var_dump($list);
-      // echo "";
-  //  } while ($count_x <= 10);
-
-    // var_dump($pokemons);
     return $pokemons;
   }
 

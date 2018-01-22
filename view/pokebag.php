@@ -1,7 +1,5 @@
 <?php
 require "../controller/pokemon-controller.php";
-// require "../includes/init.php";
-
 
 if(isset($_GET['offset'])){
   $offset = $_GET['offset'];
@@ -9,19 +7,10 @@ if(isset($_GET['offset'])){
   $pokemons = orderPokemonsPerATK(loadPokemonsPerPage($offset));
   $numPokemons = 6; //Number of best pokemons
 
-  // echo $pokemons;
-  // var_dump($pokemons) ;
-
-  // foreach ($pokemons as $pokemon) {
-  //   echo $pokemon->name."</br>";
-  //   echo "<img src = $pokemon->image></br>";
-  // }
   $bestPokemons = array();
   for ($i = 0; $i < $numPokemons; $i++) {
       array_push($bestPokemons, $pokemons[$i]);
-      // echo $pokemons[$i]->name."</br>";
-      // echo "<img src = '".$pokemons[$i]->image."'></br>";
-      // echo $pokemons[$i]->weight."kg ".$pokemons[$i]->base_experience."xp</br>";
+
   }
   //Stats of selected pokémons
   $sumStats = sumStats($bestPokemons);
@@ -39,6 +28,7 @@ if(isset($_GET['offset'])){
 
        });
     </script>
+    <div id="preload" class="preload"></div>
     <?php include '../includes/pokedex-header.php';?>
     <div class = "content">
       <h1 style="margin: 0">Pokebag</h1>

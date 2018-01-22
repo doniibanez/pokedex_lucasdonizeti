@@ -52,7 +52,17 @@ header('Location: '.SITE_URL.'/'.SITE_FOLDER);
 <?php include '../includes/header.php';?>
 
   <body>
+    <!-- HEADER -->
     <?php include '../includes/pokedex-header.php';?>
+
+    <script type = "text/javascript">
+      $(document).ready(function(){
+        setTimeout('$("#preload").fadeOut(100)', 1500);
+      });
+    </script>
+
+    <div id="preload" class="preload"></div>
+
     <div class = "content" style="padding: 0 3%">
       <img src="<?php echo $pokemon->sprites->front_default?>" alt="Pokemon Sprite"/>
       <div>
