@@ -79,5 +79,7 @@ if(isset($_GET['offset'])){
 
       <a href="<?php echo SITE_URL.'/'.SITE_FOLDER?>">Back to home</a>
     </div>
+
+    <?php include '../includes/footer.php';?>
   </body>
 </html>
