@@ -25,6 +25,7 @@ A step by step series of examples that tell you have to get a development runnin
 ```
 1. Install the XAMPP or server of your choice;
 2. Place the folder "pokedex_lucasdonizeti" inside the htdocs folder, if you use XAMPP;
+ 2.1 Rename pokedex_lucasdonizeti-master to pokedex_lucasdonizeti, if necessary
 3. Run the server.
 ```
 
